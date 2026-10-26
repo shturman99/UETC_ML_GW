@@ -1,0 +1,81 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\title{Gravitational wave production using Simulation Based Inference}
+%\author{Murman Gurgenidze}
+\date{October 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+Magnetohydrodynamic (MHD) turbulence in the early Universe, whether stirred by a
+first-order phase transition or by primordial magnetic fields, sources a
+stochastic gravitational wave (GW) background that can be potentially
+observable by current and future GW experiments like LISA and Pulsar
+Timing Arrays.
+Its signal is set by the unequal-time correlator (UETC) of the
+anisotropic stress, $E_\Pi(k,\tau_1,\tau_2)$, which encodes all the information
+required for a robust predicition of the GW spectrum.
+The UETC depends on the non-linear dynamics of the source of GWs and, therefore,
+it requires to conduct high-resolution numerical simulations of the sourcing process
+to make an accurate estimate.
+Furthermore, computing the UETC is computationally costly and most simulations
+usually just compute the resulting GW background by solving the GW equation numerically,
+which is more efficient than computing UETCs of the sourcing fields
+(e.g., velocity or magnetic fields in sources of GWs due to the development
+of MHD turbulence in the early Universe).
+On the other hand, knowledge of the UETC would allow us to develop theoretical
+models that can be applied for a range of parameters that characterize the source
+of GWs, avoiding running expensive simulations for each input parameter
+of interest.
+
+The objective of the propject is to use simulation-based inference to use
+the results of numerical simulations that provide the GW spectrum from MHD
+turbulent processes to train neural networks that allow to develop templates
+for the GW spectrum and for the UETC of the source.
+While the former is already enough to make predictions and parameter reconstruction
+given the observation, the latter modeling can provide us with a more thorough
+theoretical understanding of the sourcing process, making the results more
+trustable, falsifiable, and more directly applicable to a broader range
+of the input parameters.
+
+Due to the humongous number of sources that we expect at the LISA band, the
+LISA Global Fit combining all the different possible sources, both transient and
+stochastic, as well as reconstruction of the different sources of noise, makes the
+problem of reconstructing a stochastic GW background originating from early Universe
+sources extremelly challenging.
+Therefore, accurate but fast reconstruction of the GW background from the parameters
+that
+characterize the early Universe process leading to the GWs as, for example,
+a first-order phase transition around the electroweak scale, will become indispensable
+for a potential study of these signals from an observed GW background.
+Hence, these results could be key for studying different beyond the Standard Model
+physics that lead to a first-order phase transition, potentially providing
+an explanation to other fundamental open problems like the origin of baryons 
+over antibaryons.y
+
+We propose an MHD-only program that makes UETCs fast while building in the physics.
+We will learn the space--time spectrum $\tilde{E}_\Pi(k,\omega;T)$ of kinetic,
+magnetic and cross stresses directly. Positivity of the GW spectrum then holds by
+construction, and the signal follows from this spectrum on the light cone,
+$\omega=k$, where Alfv\'enic resonances and nonlinear decorrelation separate
+cleanly. We will
+(i) build streaming UETC diagnostics for MHD lattice codes;
+(ii) learn reduced stochastic dynamics that extrapolate to late times and high Reynolds numbers;
+(iii) quantify non-Gaussian corrections from intermittent magnetic fields; and
+(iv) build differentiable emulators in a compact, source-agnostic parameter space,
+including GW polarization from helical turbulence.
+
+These emulators make simulation-based inference (SBI) possible. Our SBI pipeline
+will treat turbulence efficiency and UETC model uncertainty as nuisance
+parameters, so posteriors honestly include theory error. It will combine our
+turbulence emulator with existing sound-wave models, handle realistic foregrounds,
+and allow joint inference with intergalactic magnetic-field constraints.
+
+The outcome will be validated MHD UETC models, a public correlator dataset,
+millisecond emulators, and an inference pipeline that links GW observations to
+early-universe turbulence and primordial magnetism with quantified uncertainty.
+
+\end{document}
